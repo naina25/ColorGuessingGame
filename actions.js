@@ -1,16 +1,10 @@
-let colors = [
-    "rgb(255, 0, 0)",
-    "rgb(255, 255, 0)",
-    "rgb(0, 255, 255)",
-    "rgb(255, 0, 255)",
-    "rgb(0, 255, 0)",
-    "rgb(0, 0, 255)"
-];
-
+let colors = [];
 let squares = document.querySelectorAll(".buttons");
-let pickedColor = colors[3];
+let pickedColor = pickColor();
 let colorDisplay = document.querySelector('#rgbVal');
 let displayMessage = document.querySelector('#message');
+
+generateRandomColors();
 
 colorDisplay.textContent = pickedColor;
 for( let i = 0 ; i<squares.length; i++){
@@ -38,4 +32,24 @@ function changeColors(color){
     squares.forEach(function(el){
         el.style.backgroundColor = color;
     })
+}
+
+// function to pick a random color from colors array
+function pickColor(){
+    let random = Math.floor(Math.random() * colors.length);
+    return colors[random];
+}
+
+function randomNum(){
+    return Math.floor(Math.random() * 256);
+}
+
+function generateRandomColors(){
+    for( let i = 0; i<6; i++){
+        let red = randomNum();
+        let green = randomNum();
+        let blue = randomNum();
+        var colorString = `rgb(${red}, ${green}, ${blue})`;
+        colors.push(colorString);
+    }   
 }
