@@ -24,6 +24,7 @@ for( let i = 0 ; i<squares.length; i++){
         if(clickedSquare === pickedColor){
             alert('right!');
             displayMessage.textContent = "Correct";
+            changeColors(pickedColor);
         }
         else{
             this.style.backgroundColor = "rgb(5, 4, 4)";
@@ -32,3 +33,9 @@ for( let i = 0 ; i<squares.length; i++){
     });
 }
 
+// function to change colors of squares
+function changeColors(color){
+    squares.forEach(function(el){
+        el.style.backgroundColor = color;
+    })
+}
